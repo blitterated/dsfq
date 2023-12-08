@@ -12,7 +12,10 @@ RUN mkdir "$SFQ_DIR"
 WORKDIR "$SFQ_DIR"
 RUN curl "https://raw.githubusercontent.com/pahandav/sfq/master/sfq.py" -o sfq && chmod +x sfq
 
+# disable last line in script requiring user input to continue
+RUN sed -i "\$s/^/\#/" /opt/sfq/sfq
+
 RUN echo "PATH=$PATH:$SFQ_DIR" >> /root/.bashrc
 
-WORKDIR /root
+WORKDIR /soundfonts
 ENTRYPOINT ["/opt/sfq/sfq"]
