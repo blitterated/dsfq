@@ -1,0 +1,19 @@
+#!/bin/bash -xe
+
+tree
+
+echo -e "\nSTART\n"
+
+echo -e "\nno quotes"
+bash -xec "test/arg-exec-test $@"
+
+echo -e "\nexec, no quotes"
+bash -xec "exec test/arg-exec-test $@"
+
+echo -e "\nwith quotes"
+bash -xec "test/arg-exec-test \"$@\""
+
+echo -e "\nexec, with quotes"
+bash -xec "exec test/arg-exec-test \"$@\""
+
+echo -e "\nEND\n"

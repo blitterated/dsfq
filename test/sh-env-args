@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo -e "\nRunning $(basename "$0")\n"
+
+echo -e "environment variables:\n----------------------------------------"
+env
+
+echo -e "\npath:\n----------------------------------------"
+echo $PATH | tr ":" "\n"
+
+echo -e "\n$# args\n----------------------------------------"
+for var in "$@"
+do
+    echo "$var"
+done

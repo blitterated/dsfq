@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# #!/root/.pyenv/versions/3.12.1/bin/python3
+import os
+import sys
+
+delim="---------------------------------------------"
+
+print ("\nRunning %s\n" % os.path.basename(__file__))
+
+# show all Environment Variables and their values
+print ("environment variables:\n%s" % delim)
+env_vars = ("   %-24s=  %s" % ev for ev in sorted(os.environ.items()) if ev[0] != "PATH")
+print ('\n'.join(env_vars))
+
+# show PATH entries
+print ("\npath:\n%s" % delim)
+path_entries = ("   %s" % p for p in os.environ.get("PATH").split(":"))
+print ('\n'.join(path_entries))
+
+# show ARGS passed into container
+print ("\nargs:\n%s" % delim)
+print ('\n'.join("   %s" % a for a in sys.argv[1:]))
